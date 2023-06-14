@@ -4,7 +4,8 @@ const order=require('../payment/payment')
 const signController=require('../controller/sign');
 route.post('/signup',signController.signUpController);
 route.post('/signin',signController.signinController);
-route.get('/signin',signController.loginController);
 route.post('/create/order',order.createOrder)
 route.post("/api/payment/verify",order.orderVerify)
+route.post("/update",signController.updateController)
+route.post('/usercourse',signController.courseDetail)
 module.exports=route;

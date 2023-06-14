@@ -5,7 +5,8 @@ const signUpStructure=mongoose.Schema({
     lastName:String,
     email:String,
     password:String,
-    mobile:Number
+    mobile:Number,
+    data:String
 })
 
 const signupModal=mongoose.model("signin",signUpStructure)
