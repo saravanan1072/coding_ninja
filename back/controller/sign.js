@@ -2,6 +2,7 @@ const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken')
 const signUpStructure=require('../model/signup')
  const courseStructure=require('../model/course')
+ const tryStructure=require('../model/multiple')
 
 var login;
 const jwt_secreat="saravanan"
@@ -125,6 +126,41 @@ const courseDetail=async(req,res)=>{
 }
 
 
+const tryController=async(req,res)=>{
+    const data=req.body.formData;
+    console.log(req.body);
+const querey={email:req.body.names}
+    console.log(querey);
+    console.log(data);
+ const fetchData=await tryStructure.find(querey)
+if(fetchData){
+const courseDocument= new tryStructure({
+  
+   
+    name:data.name,
+    email:req.body.names,
+        mobile:data.mobile,
+        address1:data.address1,
+        address2:data.address2,
+        pincode:data.pincode,
+        state:data.pincode,
+        country:data.country,
+        year:data.year,
+        degree:data.degree,
+        college:data.college,
+        company:data.company,
+        goal:data.goal,
+        kind:data.kind
+
+   })
+   const result= await courseDocument.save()
+   console.log(result);
+   res.status(200).send({message:"course enrollement sucessfull",result})
+}else{    
+res.send({message:"complete a course duration to take another course"})
+}
+
+}
 
 
 
@@ -132,5 +168,4 @@ const courseDetail=async(req,res)=>{
 
 
 
-
-module.exports={signUpController,signinController,updateController,courseDetail}
+module.exports={signUpController,signinController,updateController,courseDetail,tryController}
