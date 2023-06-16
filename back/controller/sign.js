@@ -155,9 +155,9 @@ const courseDocument= new tryStructure({
    })
    const result= await courseDocument.save()
    console.log(result);
-   res.status(200).send({message:"course enrollement sucessfull",result})
+   res.status(200).send({message:"free trial course sucessfull",result})
 }else{    
-res.send({message:"complete a course duration to take another course"})
+res.send({message:"only one course to take free"})
 }
 
 }
